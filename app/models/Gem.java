@@ -1,284 +1,120 @@
 package models;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+
 
 public class Gem implements Comparable<Gem> {
-	
+
+	private long id;
 	private String name;
-	
 	private String description;
-	
-	private int shine;
-	
 	private double price;
-	
+	private int shine;
 	private int rarity;
-	
-	private String color;
-	
 	private int faces;
-	
-	private String[] images;
-	
-	private Review review;
+	private String color;
+	private ArrayList<Review> reviews;
 
-	private long Id;
-	
-	
-	public Gem(String name, String description, int shine, double price,
-			int rarity, String color, int faces, String[] images, Review review) {
+	public Gem() {
+		this.reviews = new ArrayList<Review>();
+	}
+
+	public Gem(long id, String name, String description, double price,
+			int shine, int rarity, int faces, String color, ArrayList<Review> reviews) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.description = description;
-		this.shine = shine;
 		this.price = price;
-		this.rarity = rarity;
-		this.color = color;
-		this.faces = faces;
-		this.images = images;
-		this.review = review;
-	}
-	
-	
-
-
-
-	public Gem(String name, String description, int shine, double price,
-			int rarity, String color, int faces, String[] images) {
-		super();
-		this.name = name;
-		this.description = description;
 		this.shine = shine;
-		this.price = price;
 		this.rarity = rarity;
-		this.color = color;
 		this.faces = faces;
-		this.images = images;
-	}
-
-
-
-
-
-	public Gem(String name, String description, int shine, double price,
-			int rarity, String color, int faces) {
-		super();
-		this.name = name;
-		this.description = description;
-		this.shine = shine;
-		this.price = price;
-		this.rarity = rarity;
 		this.color = color;
-		this.faces = faces;
-	}
-	
-	public Gem(){
-		
+		this.reviews =reviews;
 	}
 
+	public long getId() {
+		return id;
+	}
 
-
-
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
 	}
 
-
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
 
 	public String getDescription() {
 		return description;
 	}
 
-
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-
-
-	public int getShine() {
-		return shine;
-	}
-
-
-
-	public void setShine(int shine) {
-		this.shine = shine;
-	}
-
-
 
 	public double getPrice() {
 		return price;
 	}
 
-
-
 	public void setPrice(double price) {
 		this.price = price;
 	}
 
+	public int getShine() {
+		return shine;
+	}
 
+	public void setShine(int shine) {
+		this.shine = shine;
+	}
 
 	public int getRarity() {
 		return rarity;
 	}
 
-
-
 	public void setRarity(int rarity) {
 		this.rarity = rarity;
 	}
-
-
-
-	public String getColor() {
-		return color;
-	}
-
-
-
-	public void setColor(String color) {
-		this.color = color;
-	}
-
-
 
 	public int getFaces() {
 		return faces;
 	}
 
-
-
 	public void setFaces(int faces) {
 		this.faces = faces;
 	}
 
-
-
-	public String[] getImages() {
-		return images;
+	public String getColor() {
+		return color;
 	}
 
-
-
-	public void setImages(String[] images) {
-		this.images = images;
+	public void setColor(String color) {
+		this.color = color;
 	}
 
-
-
-	public Review getReview() {
-		return review;
+	public ArrayList<Review> getReviews() {
+		return reviews;
 	}
 
-
-
-	public void setReview(Review review) {
-		this.review = review;
+	public void setReviews(ArrayList<Review> reviews) {
+		this.reviews = reviews;
 	}
-
-
-
-	class Review{
-		private int stars;
-		private String body;
-		private String author;
-		private int createdOn;
-		
-		
-		
-		public Review(int stars, String body, String author, int createdOn){
-			this.stars = stars;
-			this.body=body;
-			this.author=author;
-			this.createdOn=createdOn;
-		}
-
-
-
-		public int getStars() {
-			return stars;
-		}
-
-
-
-		public void setStars(int stars) {
-			this.stars = stars;
-		}
-
-
-
-		public String getBody() {
-			return body;
-		}
-
-
-
-		public void setBody(String body) {
-			this.body = body;
-		}
-
-
-
-		public String getAuthor() {
-			return author;
-		}
-
-
-
-		public void setAuthor(String author) {
-			this.author = author;
-		}
-
-
-
-		public int getCreatedOn() {
-			return createdOn;
-		}
-
-
-
-		public void setCreatedOn(int createdOn) {
-			this.createdOn = createdOn;
-		}	
-		
-		
-	}
-
-	@Override
-	public int compareTo(Gem o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-	public long getId() {
-		return Id;
-	}
- 
-	public void setId(long id) {
-		Id = id;
-	}
-
 
 	@Override
 	public String toString() {
-		return "Gem [name=" + name + ", description=" + description
-				+ ", shine=" + shine + ", price=" + price + ", rarity="
-				+ rarity + ", color=" + color + ", faces=" + faces
-				+ ", images=" + Arrays.toString(images) + ", review=" + review
-				+ "]";
+		return "(" + this.id + ", " + this.name + ", " + this.description + ", " + this.price
+				+ ", " + this.shine + ", " + this.rarity + ", " + this.faces + ", " + this.color
+				+ ", " + this.reviews + ")";
 	}
-	
-	
-	
+
+	@Override
+	public int compareTo(Gem G) {
+		return this.name.compareToIgnoreCase(G.getName());
+	}
+
 }
